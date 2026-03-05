@@ -1,0 +1,24 @@
+1- Escreva três histórias de usuário para o serviço de PIX de um banco.
+
+r:1- Como bancário, gostaria de 
+
+   2-Como analista de dados, gostaria
+
+  3- Como 
+
+
+2- Suponha que você trabalha em sistema de ensino a distância, semelhante ao Moodle.
+a) Proponha uma história épica para esse sistema
+b) Quebre essa história em algumas histórias menores.
+
+
+
+
+
+
+
+
+3)Seja um sistema para criação e preenchimento de formulários online, semelhante ao Google Forms.
+Seja a seguinte história de usuário desse sistema:
+"Como criador de um formulário, eu gostaria  de fechar o mesmo para recebimento de novas respostas"
+Escreva os testes ou critérios de aceitação para essa história.

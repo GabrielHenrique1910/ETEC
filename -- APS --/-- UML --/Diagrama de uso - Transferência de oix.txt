@@ -1,0 +1,22 @@
+Diagrama de caso de uso do serviço de tansferência de pix:
+
+Transferir Dinheiro por PIX
+Ator: Usuário do banco que deseja fazer um pix.
+
+ Fluxo Normal:
+1. O usuário abre seu aplicativo do Banco que usa;
+2. Coloca asenha do aplicativo ou desbloqueia com impressâo digital ou reconhecimento facial;
+3. O mesmo abre a página de pix no aplicativo;
+4. O usuário escohe a maneira que o pix irá ser realizado: QRcode, copia e cola ou insere a chave do pix do destinatário;
+5. Digita o valor a ser transferido;
+6. O remetente confirma os dados e o valor inserido para não gerar um erro;
+7. O remetente confirma que é realmente ele que está fazendo a transação colocando sua senha;
+8. O sistema do Banco verifica o saldo do usuário para definir se é possível transferir o valor digitado;
+9. A transferência é aceita pelo Banco;
+10. O sistema efetua a transferência.
+
+ Extensões:
+2a. Se o usuário não tiver conta, solicitar que o mesmo crie uma conta;
+7a. Se a autenticação falhar por muitas tentativas, bloquear o cliente temporariamente;
+8a. Se o valor da transferência for maior que o saldo do cliente, pedir que ele mude o valor ou cancele a transferência
+ 
