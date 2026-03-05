@@ -1,0 +1,123 @@
+	MANUTENÇÃO PREVENTIVA DE SISTEMAS:
+- A manutenção preventiva de sistemas envolve a realização periódica de tarefas que garantem a integridade, desempenho e segurança de um sistema computacional. isso pode incluir desde a atualização de software e verificação de integridade do disco até a análise de logs e monitoramento de recursos.
+
+
+	BENEFÍCIOS DA MANUTENÇÃO PREVENTIVA:
+- Prevenção de falhas: diminui o risco de paradas inesperadas;
+- Melhoria de desempenho: mantem o sistema rodando de forma otimizada;
+- Aumento da vida útil: equipamentos e software duram mais;
+- Segurança: mantem o sistema protegido contra vulnerabilidades.
+
+
+
+
+	PASSO A PASSO PARA REALIZAR MANUTENÇÃO PREVENTIVA VIA SISTEMA:
+- Atualização de softwares: mantenha o sistema operacional e o software sempre atualizados. as atualizações frequentes trazem correções de bugs, melhoria de desempenho.
+
+
+	PROCEDIMENTO:
+- Abra na barra de pesquisa e digite configurações;
+- Clique em atualização e segurança;
+- Pressione Windows update e clique em verificar atualizações;
+- Instale todas as atualizações disponíveis e se necessário reinicie o computador.
+
+
+
+
+
+	LIMPEZA DE ARQUIVOS TEMPORARIOS E CACHE:
+- A acumulação de arquivos temporários pode consumir espaço do disco e afetar o desempenho do sistema
+
+
+	PROCEDIMENTO:
+- Digite limpeza de disco na barra de limpeza do Windows;
+- Escolha a unidade a ser limpa e clique em ok;
+- Selecione os tipos de arquivos que deseja remover como: arquivos temporários, cache de internet, etc.;
+- clique em limpar arquivos do sistema para obter mais opções de limpeza;
+
+
+
+
+
+	VERIFICAÇÃO DE INTEGRIDADE DO DISCO:
+- Discos rígidos podem desenvolver setores defeituosos ao logo do tempo, o que pode levar a perda de dados. A verificação de integridade identifica e corrige esse problemas
+
+
+	PROCEDIMENTO:
+- Abra o Explorer de arquivos (Ctrl + e), clique com o botão direito do mouse na unidade de disco e selecione propriedades
+- Vá até a aba ferramentas e na sessão verificar erros clique em verificar
+
+
+
+
+
+	DESFRAGMENTÇÃO DE DISCO:
+- Em discos rígidos os arquivos podem ser fragmentados o que reduz a eficiência de leitura e gravação. a desfragmentação organiza os arquivos de forma mais eficiente
+
+
+	PROCEDIMENTO:
+- Na barra de pesquisa desfragmentar e otimizar unidades
+- Selecione disco rígido e clique em otimizar
+- O Windows automaticamente desfragmentará o disco se necessário
+
+
+
+
+
+	VERIFICAÇÃO DE SEGURANÇA E ANALISE DE VULNERABILIDADE:
+- Manter o sistema protegido contra malwares e outras ameaças é mais que fundamental uma verificação regular ajuda a garantir a integridade do sistema
+	
+
+	PROCEDIMENTO:
+- Na barra de pesquisa digite segurança do Windows
+- Vá até proteção contra vírus e ameaças e clique em verificação rápida para escanear o sistema
+- para uma analise mais completa clique em opções de verificação e escolha verificação completa ou verificação offline
+
+
+
+
+
+	MONITORAMENTO DO USO DE RECURSOS (CPU, memória, discos):
+- Monitorar o uso de recursos do sistema ajuda a identificar gargalos de desempenho, com processos que estão utilizando muitos recursos e podem estar afetando o funcionamento do sistema
+
+
+	PROCEDIMENTO:
+- Pressione ctrl + shift + esc ou digite gerenciador de tarefas na barra de pesquisa
+- No gerenciador de tarefas, clique na aba desempenho, será possível verificar o uso em tempo real: CPU (processador), memoria (ram), disco (armazenamento), rede (uso da internet)
+
+
+
+
+
+	BACKUP REGULAR DE DADOS:
+- Fazer backups regulares garante que vc tenha copias de segurança de seus arquivos importantes protegendo-os em caso de falhas de hardware, exclusões acidentais ou malwares
+
+
+	PROCEDIMENTO:
+- Digite configurações na barra de pesquisa
+- No menu a esquerda selecione a opção contas
+- Selecione a opção backup do Windows
+- Escolha a opção sincronizando a pasta do OneDrive
+
+
+
+
+
+	VERIFICAÇÃO DE LOGS DE SISTEMA:
+- logs do sistema são arquivos ou registros que armazenam informações detalhadas sobre eventos e atividades que ocorre em um sistema operacional. esses registros são criados automaticamente pelo próprio sistema e por diversos aplicativos, drivers e serviços que nele rodam
+- principais características: 
+	- registro de eventos: cada vez que um evento significativo ocorre o sistema registra esse evento;
+	- categorias comuns de logs:
+		- logs de sistema: contem informações sobre o sistema operacional, drivers, inicialização e problemas relacionados a estabilidade de 			  sistema;
+		- logs de segurança: registro de eventos relacionados a segurança, como tentativa de login, acesso a arquivos protegidos e alterações de 		  permissões;
+		- logs de aplicativos: informações sobre o comportamento e erros de aplicativos instalados no sistema;
+		- logs de hardware: detalhes sobre o desempenho e falhas de componentes de hardware, como disco rígido, placa de vídeo e o processador.
+	- finalidade: monitoramento diagnostico e solução de problemas e segurança 
+
+
+	PROCEDIMENTO:
+- na barra de pesquisa digite visualizador de eventos
+
+
+	OTIMIZAÇÃO DE INICIALIZACAO E SERVICO:
+- MUITOS programas são configurados para iniciar automaticamente junto com o Windows, o que pode fazer com que o tempo de inicialização fique mais lento. a otimização é o processo de ajustar o desempenho do sistema operacional, especialmente durante a inicialização (boot) e no gerenciamento de serviços enquanto o sistema esta em uso. o objetivo é reduzir o tempo que o sistema leva para iniciar e aumentar a responsividade do computador 
