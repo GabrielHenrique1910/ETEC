@@ -1,0 +1,14 @@
+- No evento clique do botão sair digite :
+
+     Application.Exit();
+
+
+- No Evento FormClosing do Formulário:
+
+     if (MessageBox.Show("Confirma a saída da aplicação ?", 
+         "Mensagem", MessageBoxButtons.YesNo, 
+         MessageBoxIcon.Question) == DialogResult.Yes)
+     
+         e.Cancel=false;
+     else
+         e.Cancel=true;

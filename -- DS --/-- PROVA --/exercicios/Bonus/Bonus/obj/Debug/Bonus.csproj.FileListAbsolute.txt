@@ -1,0 +1,6 @@
+C:\Users\Lab0307\Desktop\exercicios\Bonus\Bonus\bin\Debug\Bonus.exe.config
+C:\Users\Lab0307\Desktop\exercicios\Bonus\Bonus\bin\Debug\Bonus.exe
+C:\Users\Lab0307\Desktop\exercicios\Bonus\Bonus\bin\Debug\Bonus.pdb
+C:\Users\Lab0307\Desktop\exercicios\Bonus\Bonus\obj\Debug\Bonus.csprojResolveAssemblyReference.cache
+C:\Users\Lab0307\Desktop\exercicios\Bonus\Bonus\obj\Debug\Bonus.exe
+C:\Users\Lab0307\Desktop\exercicios\Bonus\Bonus\obj\Debug\Bonus.pdb

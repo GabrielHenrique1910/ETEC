@@ -1,0 +1,6 @@
+C:\Users\Lab0307\Desktop\exercicios\desconto\desconto\bin\Debug\desconto.exe.config
+C:\Users\Lab0307\Desktop\exercicios\desconto\desconto\bin\Debug\desconto.exe
+C:\Users\Lab0307\Desktop\exercicios\desconto\desconto\bin\Debug\desconto.pdb
+C:\Users\Lab0307\Desktop\exercicios\desconto\desconto\obj\Debug\desconto.csprojResolveAssemblyReference.cache
+C:\Users\Lab0307\Desktop\exercicios\desconto\desconto\obj\Debug\desconto.exe
+C:\Users\Lab0307\Desktop\exercicios\desconto\desconto\obj\Debug\desconto.pdb
