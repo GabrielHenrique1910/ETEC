@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>CRUD SJC - Vila das Flores</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <style>
+	body {
+		background-color: grey;
+		color: white;
+		font-size: 18px;
+		font-family: Arial, sans-serif;
+		text-align: center;
+	}
+	form {
+		margin-top: 40px;
+	}
+	input[type="text"] {
+		width: 300px;
+		padding: 6px;
+		border-radius: 5px;
+		border: none;
+		margin: 4px 0;
+	}
+	input[type="button"] {
+		background-color: #222;
+		color: white;
+		border: none;
+		border-radius: 5px;
+		padding: 8px 15px;
+		margin: 5px;
+		cursor: pointer;
+		transition: 0.3s;
+	}
+	input[type="button"]:hover {
+		background-color: #555;
+	}
+	img {
+		margin-top: 20px;
+		width: 250px;
+		border-radius: 10px;
+		box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	}
+ </style>
+</head>
+
+<body>
+	<h2>CRUD - SJC</h2>
+	<form name="f">
+		<p>Preencha as informações:</p>
+
+		Nome: <input type="text" name="nome"><br>
+		Cidade: <input type="text" name="cidade"><br>
+		Imagem (URL): <input type="text" name="imagem"><br>
+		Estado (ex: SP): <input type="text" name="estado" maxlength="2"><br><br>
+
+		<input type="hidden" name="acao" value="">
+
+		<input type="button" value="Cadastrar" onClick="document.f.acao.value='cadastrar'; chamarWebService();"><br>
+		<input type="button" value="Consultar" onClick="document.f.acao.value='consultar'; chamarWebService();"><br>
+		<input type="button" value="Alterar" onClick="document.f.acao.value='atualizar'; chamarWebService();"><br>
+		<input type="button" value="Excluir" onClick="document.f.acao.value='deletar'; chamarWebService();"><br>
+	</form>
+
+	<img src="banner.webp">
+
+	<script>
+	function chamarWebService(){  
+		var dados = {
+			nome   : document.f.nome.value,
+			cidade : document.f.cidade.value,
+			imagem : document.f.imagem.value,
+			estado : document.f.estado.value,
+			acao   : document.f.acao.value
+		};
+
+		console.log("Enviando dados:", dados);
+
+		$.ajax({
+			url: 'sjc.php',
+			type: 'POST',
+			dataType: 'json',
+			data: dados
+		})
+		.done(function(data){   
+			let msg = "";
+			for(var i in data){
+				msg += data[i].resultado + "\n";
+			}
+			alert(msg);
+		})
+		.fail(function(){
+			alert('Erro ao chamar o Webservice');
+		});
+	}
+	</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="css/font-awesome.min.css">
+ 
+</head>
+<body bgcolor=green>
+	<form name="f" >
+		<font color="white" size="5">Digite nome: </font><input type="text" name="nome" value="" size="35"> <br>
+		<font color="white"size="5">Digite nome da imagem:</font> <input type="text" name="imagem" value="" size="35"> <br>	<br>
+		<div align="center"><input type="hidden" name="acao" value="">	
+		<input type="button" value=" cadastro " onClick="document.f.acao.value='cadastro';chamarWebService();"> <br><br>
+		<input type="button" value=" consulta " onClick="document.f.acao.value='consulta';chamarWebService();"> <br><br>
+		<input type="button" value=" alteracao" onClick="document.f.acao.value='alteracao';chamarWebService();"><br><br>
+		<input type="button" value=" exclusao " onClick="document.f.acao.value='exclusao';chamarWebService();"> <br></div>
+	</form>
+</body>	
+
+<script>
+	function chamarWebService(){  
+        // define dados a serem enviados para o webservice
+		var dados = {
+			nome	: document.f.nome.value,
+			imagem	: document.f.imagem.value,
+			acao	: document.f.acao.value //identifica ação a ser relalizada pelo webservice
+		};
+	   // informa início da chamda a execução do webservice		
+	   alert('Webservice vai ser executado');    
+       $.ajax({
+				url: 'crud.php',// script a ser chamado
+				type: 'POST',// Método de envio				
+				dataType: 'json',// Tipo de retorno
+				data:dados
+				
+		})
+		// .done é executado quando serviço termina, retornando informações na variável data
+		.done(function(data)
+		{   
+			alert('Webservice retorna dados JSON');    			
+			// percorre json data
+			for(var i in data){
+				alert(data[i].resultado);//mostra informação retornada
+			}
+			// fim da execução do webservice
+			alert('Webservice finalizado');    
+		});   
+}
+</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="css/font-awesome.min.css">
+</head>
+
+<body style="background-color: grey; color: white; font-size: 20px;">
+	<form name="f">
+		<center>Digite Nome: <input type="text" name="nome" size="35"><br>
+		Digite Cidade: <input type="text" name="cidade" size="35"><br>
+		Nome da Imagem: <input type="text" name="imagem" size="35"><br><br></center>
+
+		<div align="center">
+			<input type="hidden" name="acao" value="">
+			<input type="button" value="cadastro" onClick="document.f.acao.value='cadastro';chamarWebService();"><br>
+			<input type="button" value="consulta" onClick="document.f.acao.value='consulta';chamarWebService();"><br>
+			<input type="button" value="alteracao" onClick="document.f.acao.value='alteracao';chamarWebService();"><br>
+			<input type="button" value="exclusao" onClick="document.f.acao.value='exclusao';chamarWebService();"><br>
+		</div>
+	</form>
+
+	<script>
+	function chamarWebService(){  
+		var dados = {
+			nome	: document.f.nome.value,
+			cidade	: document.f.cidade.value,
+			imagem	: document.f.imagem.value,
+			acao	: document.f.acao.value // identifica ação a ser realizada
+		};
+	   
+		alert('Webservice vai ser executado');    
+		$.ajax({
+			url: 'crud.php',
+			type: 'POST',
+			dataType: 'json',
+			data: dados
+		})
+		.done(function(data){   
+			alert('Webservice retorna dados JSON');    			
+			for(var i in data){
+				alert(data[i].resultado);
+			}
+			alert('Webservice finalizado');    
+		});   
+	}
+	</script>
+</body>
+</html>
