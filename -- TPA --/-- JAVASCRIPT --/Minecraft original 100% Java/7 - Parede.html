@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Produto de 3</h1>
+    <p id="resultado"></p>
+    <script>
+        var numero1 = prompt("Digite a largura da parede: ")
+        var numero2 = prompt("Digite a altura da parede: ")
+
+        numero1 = parseFloat(numero1);
+        numero2 = parseFloat(numero2);
+        if (!isNaN(numero1) && !isNaN(numero2)){
+            var area = numero1 * numero2
+            var qnt = area / 2.3
+            var resultadoElemento = document.getElementById("resultado");
+            resultadoElemento.innerHTML = `É necessário ${qnt}L de tinta para pintar a parede com ${area}M2 de área.`;
+    } else  {
+        window.alert ("Por favor, insira um número válido.");
+    }
+    </script>
+</body>
+</html>

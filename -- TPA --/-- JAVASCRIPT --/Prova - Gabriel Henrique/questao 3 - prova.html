@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Par ou Impar</title>
+</head>
+<body>
+    <center>
+        <h1>3- Desenvolva um programa em javascript que mostre se o numero é par ou impar</h1>
+        <h3><p id="resultado"></p></h3>
+    </center>
+
+    <script>
+        var numero = prompt("Digite um número: ")
+
+        numero = parseFloat(numero);
+
+        if (!isNaN(numero)){
+            var resultadoElemento = document.getElementById("resultado");
+            if (numero % 2 === 0){
+                resultadoElemento.textContent = `O número é par!`;
+            } else {
+                resultadoElemento.textContent = `O número é impar!`;
+            }
+    } else  {
+        window.alert ("Por favor, insira um número válido.");
+    }
+    </script>
+</body>
+</html>

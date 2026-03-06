@@ -1,0 +1,11 @@
+1- Desenvolva um programa que informe se o número digitado é maior ou igual ou menor que 50.
+
+2- Desenvolva um programa que informe se o número digitado é positivo ou negativo.
+
+3- Desenvolva um programa que leia dois números e informe se os números são iguais ou diferentes.
+
+4- Desenvolva um programa que leia dois números e informe-os em ordem crescente.
+
+5- Desenvolva um programa que leia um número inteiro e informe se o número é par ou ímpar.
+
+6- Desenvolva um programa que leia um número e informe se ele é ou não divisivel por cinco.

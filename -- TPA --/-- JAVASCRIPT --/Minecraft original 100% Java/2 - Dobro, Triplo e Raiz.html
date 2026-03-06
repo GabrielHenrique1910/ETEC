@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dobro, triplo e raiz</title>
+</head>
+<body>
+    <h1>Dobro, triplo e raiz</h1>
+    <p id="resultado"></p>
+    <script>
+        var numero = prompt("Digite um número: ")
+
+        numero = parseFloat(numero);
+        if (!isNaN(numero)){
+            var dobro = numero * 2
+            var triplo = numero * 3
+            var raiz = Math.sqrt(numero)
+            var resultadoElemento = document.getElementById("resultado");
+            resultadoElemento.textContent = `O dobro de ${numero} é ${dobro} o triplo é ${triplo} e a raiz ${raiz}.`;
+    } else  {
+        window.alert ("Por favor, insira um número válido.");
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Real -> Dolar</h1>
+    <p id="resultado"></p>
+    <script>
+        var numero = prompt("Digite o primeiro número: ")
+        var cotacao = prompt("Digite o segundo número: ")
+
+        numero = parseFloat(numero);
+        cotacao = parseFloat(cotacao);
+
+        if (!isNaN(numero) && !isNaN(cotacao)){
+            var resultado = numero * cotacao
+            var resultadoElemento = document.getElementById("resultado");
+            resultadoElemento.innerHTML = `Com ${numero} você pode comprar ${resultado}.`;
+    } else  {
+        window.alert ("Por favor, insira um número válido.");
+    }
+    </script>
+</body>
+</html>

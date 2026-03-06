@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Divisivel por 7</title>
+</head> 
+<body>
+    <center>
+        <h1>4- Desenvolva um programa em javascript que mostre se o numero é ou nao divisivel por 7</h1>
+        <h3><p id="resultado"></p></h3>
+    </center>
+
+    <script>
+        var numero = prompt("Digite um número: ")
+
+        numero = parseFloat(numero);
+
+        if (!isNaN(numero)){
+            var resultadoElemento = document.getElementById("resultado");
+            if (numero % 7 === 0){
+                resultadoElemento.textContent = `O número É divisivel por 7!`;
+            } else {
+                resultadoElemento.textContent = `O número NÃO É divisivel por 7!`;
+            }
+    } else  {
+        window.alert ("Por favor, insira um número válido.");
+    }
+    </script>
+</body>
+</html>

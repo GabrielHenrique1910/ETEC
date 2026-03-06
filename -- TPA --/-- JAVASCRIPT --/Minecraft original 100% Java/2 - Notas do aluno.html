@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas do aluno</title>
+</head>
+<body>
+    <h1>Notas do Aluno</h1>
+    <p id="resultado"></p>
+    <script>
+        var numero1 = prompt("Digite a primeira nota: ")
+        var numero2 = prompt("Digite a segunda nota: ")
+        var numero3 = prompt("Digite a terceira nota: ")
+        var numero4 = prompt("Digite a quarta nota: ")
+
+
+        numero1 = parseFloat(numero1);
+        numero2 = parseFloat(numero2);
+        numero3 = parseFloat(numero3);
+        numero4 = parseFloat(numero4);
+        if (!isNaN(numero1) && !isNaN(numero2) && !isNaN(numero3) && !isNaN(numero4)){
+            var media = (numero1 + numero2 + numero3 + numero4)/4
+            var resultadoElemento = document.getElementById("resultado");
+            resultadoElemento.textContent = `A média é ${media}.`;
+    } else  {
+        window.alert ("Por favor, insira um número válido.");
+    }
+    </script>
+</body>
+</html>

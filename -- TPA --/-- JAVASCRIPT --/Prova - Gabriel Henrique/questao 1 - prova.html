@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Conversor</title>
+</head>
+<body>
+    <center>
+        <h1>1- Desenvolva um programa em javascript que calcule a conversão de dolar pra real</h1>
+        <h3><p id="resultado"></p></h3>
+    </center>
+
+    <script>
+        var cotacao = prompt("Digite a cotação atual do dólar: ")
+        var dolar = prompt("Digite o valor em dolar: ")
+       
+        cotacao = parseFloat(cotacao);
+        real = parseFloat(real);
+
+        if (!isNaN(cotacao) && !isNaN(dolar)){
+            var real = cotacao * dolar
+            var resultadoElemento = document.getElementById("resultado");
+            resultadoElemento.textContent = `O valor convertido para real é: R$${real}`;
+    } else  {
+        window.alert ("Por favor, insira um número válido.");
+    }
+    </script>
+</body>
+</html>
