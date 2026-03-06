@@ -1,0 +1,31 @@
+create database bd_testedeconexaocombancodedados_2dstb;
+
+use bd_testedeconexaocombancodedados_2dstb;
+
+
+create table tb_login(
+
+	log_usuario varchar(20) not null,
+
+    log_nome varchar(100) not null,
+
+    log_senha varchar(50) not null,
+
+    log_atualizacao datetime not null default current_timestamp
+
+);
+
+insert into tb_login (log_usuario, log_senha, log_nome, log_atualizacao)values
+('Leo', '1622004', 'Leonardo Irineu', current_timestamp);
+
+create table tb_produtos(
+	Prod_Codigo VarChar(5) primary key,
+    Prod_Descricao varchar(30) not null,
+    Prod_Qtd_Estoq decimal(5,2) not null,
+    Prod_Estoq_Min decimal(5,2) not null,
+    Prod_Unidade char(2) not null,
+    Prod_Locacao varchar(3) not null,
+    Prod_PrcCusto decimal(6,2) not null,
+    Prod_Marg_Lucro decimal(4,2) not null,
+    Prod_ult_Atualizacao  timestamp DEFAULT current_timestamp ON UPDATE current_timestamp
+    );

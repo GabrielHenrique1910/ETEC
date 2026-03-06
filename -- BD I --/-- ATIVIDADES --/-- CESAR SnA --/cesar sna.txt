@@ -1,0 +1,198 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
+USE `mydb` ;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`TB_USUARIO`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`TB_USUARIO` (
+  `cd_usuario` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(100) NOT NULL,
+  `senha` VARCHAR(100) NOT NULL,
+  `tipo` ENUM('hóspede', 'anfitrião') NOT NULL,
+  `data_cadastro` DATETIME NOT NULL DEFAULT current timestamp,
+  `telefone` VARCHAR(15) NOT NULL,
+  `endereco` VARCHAR(250) NOT NULL,
+  `documento` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`cd_usuario`),
+  UNIQUE INDEX `cd_usuario_UNIQUE` (`cd_usuario` ASC) VISIBLE,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
+  UNIQUE INDEX `documento_UNIQUE` (`documento` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`TB_PROPRIEDADE`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`TB_PROPRIEDADE` (
+  `cd_propriedade` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(100) NOT NULL,
+  `descricao` TEXT NULL,
+  `tipo` ENUM('apartamento', 'casa', 'quarto', 'hotel') NOT NULL,
+  `localizacao` VARCHAR(250) NOT NULL,
+  `preco_por_noite` DECIMAL(6,2) NOT NULL,
+  `status` ENUM('disponivel', 'ocupado', 'manutencao', 'fechado') NOT NULL,
+  `regras` TEXT NOT NULL,
+  `TB_USUARIO_cd_usuario` INT NOT NULL,
+  PRIMARY KEY (`cd_propriedade`),
+  UNIQUE INDEX `cd_propriedade_UNIQUE` (`cd_propriedade` ASC) VISIBLE,
+  INDEX `fk_TB_PROPRIEDADE_TB_USUARIO_idx` (`TB_USUARIO_cd_usuario` ASC) VISIBLE,
+  CONSTRAINT `fk_TB_PROPRIEDADE_TB_USUARIO`
+    FOREIGN KEY (`TB_USUARIO_cd_usuario`)
+    REFERENCES `mydb`.`TB_USUARIO` (`cd_usuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`TB_RESERVA`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`TB_RESERVA` (
+  `cd_reserva` INT NOT NULL AUTO_INCREMENT,
+  `data_inicio` DATE NOT NULL,
+  `data_fim` DATE NOT NULL,
+  `status` ENUM('confirmada', 'cancelada', 'pendente') NOT NULL,
+  `valor` DECIMAL(6,2) NOT NULL,
+  `TB_USUARIO_cd_usuario` INT NOT NULL,
+  `TB_PROPRIEDADE_cd_propriedade` INT NOT NULL,
+  PRIMARY KEY (`cd_reserva`),
+  UNIQUE INDEX `cd_reserva_UNIQUE` (`cd_reserva` ASC) VISIBLE,
+  INDEX `fk_TB_RESERVA_TB_USUARIO1_idx` (`TB_USUARIO_cd_usuario` ASC) VISIBLE,
+  INDEX `fk_TB_RESERVA_TB_PROPRIEDADE1_idx` (`TB_PROPRIEDADE_cd_propriedade` ASC) VISIBLE,
+  CONSTRAINT `fk_TB_RESERVA_TB_USUARIO1`
+    FOREIGN KEY (`TB_USUARIO_cd_usuario`)
+    REFERENCES `mydb`.`TB_USUARIO` (`cd_usuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_TB_RESERVA_TB_PROPRIEDADE1`
+    FOREIGN KEY (`TB_PROPRIEDADE_cd_propriedade`)
+    REFERENCES `mydb`.`TB_PROPRIEDADE` (`cd_propriedade`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`TB_AVALIAÇÃO`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`TB_AVALIAÇÃO` (
+  `cd_avaliacao` INT NOT NULL AUTO_INCREMENT,
+  `nota` TINYINT NOT NULL,
+  `comentario` TEXT NULL,
+  `data` DATE NOT NULL,
+  `TB_USUARIO_cd_usuario` INT NOT NULL,
+  `TB_PROPRIEDADE_cd_propriedade` INT NOT NULL,
+  PRIMARY KEY (`cd_avaliacao`),
+  UNIQUE INDEX `cd_avaliacao_UNIQUE` (`cd_avaliacao` ASC) VISIBLE,
+  INDEX `fk_TB_AVALIAÇÃO_TB_USUARIO1_idx` (`TB_USUARIO_cd_usuario` ASC) VISIBLE,
+  INDEX `fk_TB_AVALIAÇÃO_TB_PROPRIEDADE1_idx` (`TB_PROPRIEDADE_cd_propriedade` ASC) VISIBLE,
+  CONSTRAINT `fk_TB_AVALIAÇÃO_TB_USUARIO1`
+    FOREIGN KEY (`TB_USUARIO_cd_usuario`)
+    REFERENCES `mydb`.`TB_USUARIO` (`cd_usuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_TB_AVALIAÇÃO_TB_PROPRIEDADE1`
+    FOREIGN KEY (`TB_PROPRIEDADE_cd_propriedade`)
+    REFERENCES `mydb`.`TB_PROPRIEDADE` (`cd_propriedade`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`TB_PAGAMENTO`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`TB_PAGAMENTO` (
+  `cd_pagamento` INT NOT NULL AUTO_INCREMENT,
+  `valor` DECIMAL(6,2) NOT NULL,
+  `data` DATE NOT NULL,
+  `status` ENUM('pago', 'pendente', 'cancelado') NOT NULL,
+  `metodo_pagamento` ENUM('cartão', 'paypal', 'pix', 'dinheiro', 'transferência') NOT NULL,
+  `TB_RESERVA_cd_reserva` INT NOT NULL,
+  PRIMARY KEY (`cd_pagamento`),
+  UNIQUE INDEX `id_pagamento_UNIQUE` (`cd_pagamento` ASC) VISIBLE,
+  INDEX `fk_TB_PAGAMENTO_TB_RESERVA1_idx` (`TB_RESERVA_cd_reserva` ASC) VISIBLE,
+  CONSTRAINT `fk_TB_PAGAMENTO_TB_RESERVA1`
+    FOREIGN KEY (`TB_RESERVA_cd_reserva`)
+    REFERENCES `mydb`.`TB_RESERVA` (`cd_reserva`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`TB_COMODIDADE`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`TB_COMODIDADE` (
+  `cd_comodidade` INT NOT NULL AUTO_INCREMENT,
+  `descricao` TEXT NOT NULL,
+  PRIMARY KEY (`cd_comodidade`),
+  UNIQUE INDEX `cd_comodidade_UNIQUE` (`cd_comodidade` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`TB_MENSAGEM`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`TB_MENSAGEM` (
+  `cd_mensagem` INT NOT NULL AUTO_INCREMENT,
+  `conteudo` TEXT NOT NULL,
+  `data_envio` DATE NOT NULL,
+  `TB_USUARIO_cd_usuario` INT NOT NULL,
+  `TB_RESERVA_cd_reserva` INT NOT NULL,
+  PRIMARY KEY (`cd_mensagem`),
+  UNIQUE INDEX `cd_mensagem_UNIQUE` (`cd_mensagem` ASC) VISIBLE,
+  INDEX `fk_TB_MENSAGEM_TB_USUARIO1_idx` (`TB_USUARIO_cd_usuario` ASC) VISIBLE,
+  INDEX `fk_TB_MENSAGEM_TB_RESERVA1_idx` (`TB_RESERVA_cd_reserva` ASC) VISIBLE,
+  CONSTRAINT `fk_TB_MENSAGEM_TB_USUARIO1`
+    FOREIGN KEY (`TB_USUARIO_cd_usuario`)
+    REFERENCES `mydb`.`TB_USUARIO` (`cd_usuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_TB_MENSAGEM_TB_RESERVA1`
+    FOREIGN KEY (`TB_RESERVA_cd_reserva`)
+    REFERENCES `mydb`.`TB_RESERVA` (`cd_reserva`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`TB_PROPRIEDADE_TB_COMODIDADE`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`TB_PROPRIEDADE_TB_COMODIDADE` (
+  `TB_PROPRIEDADE_cd_propriedade` INT NOT NULL,
+  `TB_COMODIDADE_cd_comodidade` INT NOT NULL,
+  PRIMARY KEY (`TB_PROPRIEDADE_cd_propriedade`, `TB_COMODIDADE_cd_comodidade`),
+  INDEX `fk_TB_PROPRIEDADE_has_TB_COMODIDADE_TB_COMODIDADE1_idx` (`TB_COMODIDADE_cd_comodidade` ASC) VISIBLE,
+  INDEX `fk_TB_PROPRIEDADE_has_TB_COMODIDADE_TB_PROPRIEDADE1_idx` (`TB_PROPRIEDADE_cd_propriedade` ASC) VISIBLE,
+  CONSTRAINT `fk_TB_PROPRIEDADE_has_TB_COMODIDADE_TB_PROPRIEDADE1`
+    FOREIGN KEY (`TB_PROPRIEDADE_cd_propriedade`)
+    REFERENCES `mydb`.`TB_PROPRIEDADE` (`cd_propriedade`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_TB_PROPRIEDADE_has_TB_COMODIDADE_TB_COMODIDADE1`
+    FOREIGN KEY (`TB_COMODIDADE_cd_comodidade`)
+    REFERENCES `mydb`.`TB_COMODIDADE` (`cd_comodidade`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

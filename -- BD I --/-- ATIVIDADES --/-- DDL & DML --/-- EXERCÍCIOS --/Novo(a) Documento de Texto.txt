@@ -1,0 +1,66 @@
+create database db_estacionamento;
+
+use db_estacionamento;
+
+create table tb_funcionario (
+cd_funcionario int primary key auto_increment,
+nm_funcionario varchar(45) not null,
+nm_email varchar(45) not null,
+cd_senha varchar(80) not null,
+
+constraint email_unico unique(nm_email) 
+);
+
+create table tb_veiculo (
+cd_veiculo int primary key auto_increment,
+cd_placa varchar(10) not null,
+dt_entrada datetime not null default current_timestamp,
+id_funcionario_entrada int not null,
+dt_saida datetime,
+id_funcionario_saida int,
+foreign key (id_funcionario_entrada) references tb_funcionario (cd_funcionario),
+foreign key (id_funcionario_saida) references tb_funcionario (cd_funcionario)
+);
+
+insert into tb_funcionario values
+ (null, "Gabriel Henrique", "gabrielhenrique@mail.com", "123gabriel789");
+ 
+ insert into tb_funcionario values
+ (null, "César Fernando", "cesarfernando@mail.com", "123cesar789");
+ 
+ insert into tb_funcionario values
+ (null, "José Eduardo", "joseeduardo@mail.com", "123jose789");
+ 
+ select * from tb_funcionario;
+ 
+create table tb_tipo_veiculo (
+cd_veiculo int primary key not null auto_increment,
+nm_tipo_veiculo varchar(20) not null
+);
+
+insert into tb_tipo_veiculo values
+ (null, "moto");
+ 
+insert into tb_tipo_veiculo values
+ (null, "carro");
+ 
+insert into tb_tipo_veiculo values
+ (null, "van");
+ 
+insert into tb_tipo_veiculo values
+ (null, "suv");
+ 
+insert into tb_tipo_veiculo values
+ (null, "pick-up");
+ 
+ alter table tb_veiculo add column
+ id_tipo_veiculo int not null;
+ 
+alter table tb_tipo_veiculo drop column
+cd_veiculo;
+
+ alter table tb_tipo_veiculo add column
+ cd_tipo_veiculo int primary key not null auto_increment;
+ 
+ alter table tb_veiculo add
+ foreign key (id_tipo_veiculo) references tb_tipo_veiculo(cd_tipo_veiculo);

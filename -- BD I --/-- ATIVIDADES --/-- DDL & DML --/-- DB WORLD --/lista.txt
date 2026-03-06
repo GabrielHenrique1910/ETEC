@@ -1,0 +1,101 @@
+use world;
+    
+-- 1) exibir a região, o país e a forma de governo
+
+		select 
+		region, name, governmentform
+		from country;
+        
+-- 2) exibir o continente, o país e a expectativa de vida dos países com expectativa de vida superior a 65 anos
+
+		select 
+		continent, name, lifeexpectancy
+		from country
+        where 
+        lifeexpectancy > 65;
+        
+-- 3) exibir o continente e a quantidade de países por continente cuja população tenha expectativa de vida inferior a 60 anos
+
+		select 
+		continent, count(*)
+		from country
+		where lifeexpectancy < 60
+		group by continent;
+        
+-- 4) exibir o continente e a quantidade de países não independentes por continente
+
+		select 
+		continent, count(*)
+		from country
+		where 
+		indepyear is null
+		group by continent;
+        
+-- 5) exibir o continente e a população total que vive em monarquias
+
+		select 
+        continent, sum(population)
+        from country
+        where
+        governmentform = 'monarchy'
+        group by continent;
+        
+-- 6) exibir o idioma e a quantidade de países que tem o espanhol como idioma oficial ou não
+
+		select
+		language, count(language)
+        from countrylanguage
+        where language = 'spanish';
+        
+-- 7) exibir o país e a quantidade de cidades cadastradas por país
+
+		select
+        countrycode, count(name)
+        from city
+        group by countrycode;
+		
+-- 8) exibir o continente e o total de população por continente que vive em territórios não independentes
+
+		select 
+        continent, sum(population)
+        from country
+        where indepyear is null
+        group by continent;
+        
+-- 9) exibir o continente e todos os países cujo nome tenha até 6 letras
+
+		select
+        continent, name
+        from country
+        where name like '______';
+        
+-- 10)exibir o todos os continentes e o total de países por continente, considerando a América como apenas 1 continente
+
+		select
+        continent, count(country)
+        from country
+        where ;
+        
+-- 11)exibir a sigla do país e a quantidade de idiomas oficiais ou não por país
+
+		select 
+        countrycode, count(language)
+        from countrylanguage
+        group by countrycode;
+        
+-- 12)exibir a sigla do país e o total de idiomas oficiais por país
+
+		select 
+        countrycode, count(language)
+        from countrylanguage
+		where isofficial = 'T'
+        group by countrycode;
+        
+-- 13)exibir o continente e o total de países por continente que tenham populações inferiores a 100 milhões de habitantes
+
+		select
+        continent, count(country)
+        from country
+        where population < 100000000
+        group by continent
+        

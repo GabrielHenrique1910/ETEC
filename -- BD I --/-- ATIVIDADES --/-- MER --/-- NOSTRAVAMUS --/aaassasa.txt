@@ -1,0 +1,27 @@
+Para dia 5 de Abril!
+ESTUDO DE CASO:
+
+O Bar&Restaurante Nostravamus está abrindo uma nova unidade em São José dos Campos.
+
+A Empresa precisa implantar um sistema de:
+
+- controle de reservas de mesa, onde o cliente informa seu nome, telefone para 
+contato, data e hora da reserva, numero de pessoas! (pode ser via site ou contato telefônico);
+
+- cardápio eletrônico, onde o cliente pode visualizar o cardápio, porém somente o 
+garçom pode realizar os pedidos; todos os pedidos são vinculados a uma comanda e 
+também ao garçom que fez o pedido
+
+- comanda de pedidos, onde a comanda será vinculada ao número da mesa
+
+A empresa solicitou a você que elabore um modelo entidade-relacionamento, 
+listando as Entidades, os Atributos, os Tipos de Dados e os 
+Relacionamentos existentes entre as entidades.
+
+Observações:
+Pode ser feito em dupla
+
+Entregar via Teams
+
+Cada aluno deve entregar o seu
+

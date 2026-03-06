@@ -1,0 +1,140 @@
+	use sakila;
+
+-- 11) Exibir o nome do artista e a quantidade de filmes que ele participou:
+		select 
+		concat(actor.first_name, " ", actor.last_name) as "Ator", 
+		count(film_actor.actor_id) as "Quantidade de Filmes"
+		from film_actor
+        
+		inner join actor on film_actor.actor_id = actor.actor_id
+        
+		group by actor.actor_id
+        order by count(film_actor.actor_id) desc;
+        
+
+
+
+
+
+-- 12) Exibir o artista e a quantidade de filmes de ação que cada um participou:
+		select
+		concat(actor.first_name, ' ', actor.last_name) as "Ator", 
+		count(f.film_id) as "Quantidade de Filmes de Ação"
+		from actor
+        
+		inner join film_actor 		as f_a 	on f_a.actor_id = actor.actor_id
+		inner join film 			as f 	on f.film_id = f_a.film_id
+		inner join film_category 	as f_c 	on f_c.film_id = f.film_id
+		inner join category		 	as c 	on c.category_id = f_c.category_id
+        
+		where c.name = 'Action' 
+		group by actor.actor_id, actor.first_name, actor.last_name
+        order by count(f.film_id) desc;
+
+
+
+
+
+-- 13) Exibir o id da loja e o lucro por loja:
+		select
+		store.store_id as 'id da loja',
+		sum(payment.amount) as 'lucro'
+		from payment
+		inner join rental on rental.store_id = store.store_id
+		inner join payment on payment.staff_id = staff.staff_id
+		group by store.store_id
+		order by 'lucro' desc;
+
+
+
+
+
+-- 14) Exibir o lucro total das lojas:
+		
+
+
+
+
+-- 15) Exibir a quantidade de filmes que ainda não foram devolvidos:
+		
+
+
+
+
+-- 16) Exibir a quantidade de filmes alugados às sextas-feiras:
+		
+
+
+
+
+-- 17) Exibir a quantidade de filmes que não estão mais disponíveis para locação:
+		
+
+
+
+
+-- 18) Exibir somente os clientes que estão inativos no sistema:
+		
+
+
+
+
+-- 19) Exibir o filme e o nome de cada cliente que o alugou:
+		
+
+
+
+
+-- 20) Exibir os 10 clientes que mais alugaram filmes de ação:
+		
+
+
+
+
+-- 21) Exibir o filme, a categoria e a quantidade de artistas que participaram do filme:
+		
+
+
+
+
+-- 22) Exibir a data e a quantidade de filmes alugados por data:
+		
+
+
+
+
+-- 23) Exibir a loja e a quantidade de clientes ativos e inativos por loja:
+		
+
+
+
+
+-- 24) Exibir a loja e o valor a receber (locações pendentes) em cada loja:
+		
+
+
+
+
+-- 25) Exibir todos os filmes, o id do inventário e o cliente cuja locação ainda não foi finalizada:
+		
+        
+        
+        
+        
+select * from country;
+select * from city;
+select * from address;
+select * from customer;
+-----------------------
+select * from store;
+select * from staff;
+select * from payment;
+select * from rental;
+-----------------------
+select * from film;
+select * from category;
+select * from film_category;
+select * from language;
+select
+count (film_id)
+ from film_actor
