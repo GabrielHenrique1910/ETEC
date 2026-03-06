@@ -1,0 +1,32 @@
+codigo inimigo:
+
+create:
+// Evento Create do objeto inimigo
+
+speed = 1; // Velocidade de movimento do inimigo
+
+
+etapa:
+// Evento Step do objeto inimigo
+
+
+
+// Nome correto do objeto do personagem
+var player_obj = Object1;
+
+// Verificar se o objeto do personagem existe
+if (instance_exists(player_obj)) {
+    // Obter a posição do personagem
+    var target_x = player_obj.x;
+    var target_y = player_obj.y;
+
+    // Calcular a direção para o personagem
+    var dir = point_direction(x, y, target_x, target_y);
+
+    // Mover o inimigo em direção ao personagem
+    motion_set(dir, speed);
+} else {
+    // Mensagem de depuração se o objeto do personagem não for encontrado
+    show_message("Objeto do personagem (obj_1) não encontrado.");
+}
+

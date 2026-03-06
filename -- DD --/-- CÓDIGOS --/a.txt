@@ -1,0 +1,66 @@
+Passos:
+
+Adicionar um Evento de Pressionar Tecla:
+
+No objeto do jogador (obj_player), você deve adicionar um evento de pressionar tecla para detectar quando o jogador quer atacar.
+
+gml
+Copiar código
+// Evento: Keyboard Pressed (Z)
+if (keyboard_check_pressed(vk_z)) {
+    // Chama a função de ataque
+    attack();
+}
+Criar a Função de Ataque:
+
+Você pode criar um script separado para a função de ataque, ou definir o código diretamente no evento de pressionar tecla. Vamos criar um script chamado scr_attack.gml para a função de ataque.
+
+Script: scr_attack.gml
+
+gml
+Copiar código
+// Define o alcance do ataque
+var attack_range = 50; // Ajuste conforme necessário
+var attack_damage = 10; // Ajuste conforme necessário
+
+// Obtém todos os inimigos dentro do alcance do ataque
+var enemies = instance_place_list(x, y, obj_enemy, attack_range);
+
+// Percorre todos os inimigos e aplica dano
+for (var i = 0; i < array_length(enemies); i++) {
+    var enemy = enemies[i];
+    
+    // Aplica dano ao inimigo (supondo que o inimigo tenha uma variável 'hp' para a vida)
+    enemy.hp -= attack_damage;
+    
+    // Adicione algum feedback visual ou sonoro para o ataque, se desejar
+    // Exemplo: play_sound(snd_attack, 1, false);
+    
+    // Você pode querer adicionar um efeito de ataque, como uma animação
+    // Exemplo: instance_create_layer(enemy.x, enemy.y, "Effects", obj_attack_effect);
+}
+Adicionar um Efeito Visual ou Sonoro:
+
+Para melhorar a experiência do jogo, você pode adicionar um efeito visual ou sonoro quando o ataque ocorre. Aqui está como você pode fazer isso:
+
+Efeito Sonoro:
+
+No evento scr_attack.gml, adicione uma linha para tocar um som quando o ataque é realizado.
+
+gml
+Copiar código
+// Adiciona um efeito sonoro
+if (instance_exists(snd_attack)) {
+    audio_play_sound(snd_attack, 1, false);
+}
+Efeito Visual:
+
+Se você tiver um objeto de efeito (por exemplo, obj_attack_effect), você pode instanciá-lo no local do inimigo para mostrar um efeito visual.
+
+gml
+Copiar código
+// Cria um efeito visual no local do inimigo
+instance_create_layer(enemy.x, enemy.y, "Effects", obj_attack_effect);
+Definir a Lógica do Inimigo:
+
+Certifique-se de que o objeto inimigo (obj_enemy) tenha uma variável hp que diminui quando o dano é aplicado. Adicione lógica para lidar com a

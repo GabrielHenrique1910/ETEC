@@ -1,0 +1,60 @@
+// Scripts do slime
+
+function scr_slime_andando_escolher_estado(){
+	prox_estado = choose(scr_slime_andando, src_slime_parado);
+
+	if prox_estado == scr_slime_andando{
+		estado = scr_slime_andando;
+		dest_x = irandom_range(0, room_width);
+		dest_y  = irandom_range(0, room_height);
+	}else if prox_estado == scr_slime_parado{
+		estado = scr_slime_parado;
+	}
+}
+
+function scr_slime_andando(){
+	image_speed = 1;
+
+	var _dir = point_direction(x, y, dest_x, dest_y);
+	hveloc = lenghtdir_x(veloc, _dir);
+	vveloc = lenghtdir_y(veloc, _dir);
+
+	x += hveloc;
+	y += vveloc;
+}
+
+function scr_slime_parado(){
+	image_speed = 0.5;
+}
+
+
+
+
+
+//alarme[0] slime
+
+estado = scr_slime_escolher_estado;
+alarm[0] = irandom_range(120, 240)
+
+
+
+
+
+//criar slime 
+
+randomize();  //parte de cima
+estado = scr_slime_escolher_estado;  // atualizar
+alarm[0] = 1  //parte de cima
+
+veloc_perseg = 0.5;  //adicionar
+dist_aggro = 50  //parte de baixo
+dist_desaggro = 100  //parte de baixo
+
+
+
+
+
+//etapa slime
+
+script_execute(estado);
+	

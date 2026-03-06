@@ -1,0 +1,89 @@
+Claro! Vou continuar e detalhar o que você precisa para definir a lógica do inimigo (`obj_enemy`) e como garantir que ele reaja adequadamente quando recebe dano. Além disso, vou incluir uma visão geral de como você pode integrar tudo isso de forma coesa.
+
+### Definindo a Lógica do Inimigo
+
+Para que o inimigo (`obj_enemy`) funcione corretamente com o sistema de ataque que você implementou, você precisará garantir que ele possa lidar com a diminuição de vida (`hp`) e a destruição quando sua vida chega a zero.
+
+Aqui está um exemplo de como você pode configurar a lógica do inimigo:
+
+1. **Adicionar Variáveis ao Inimigo:**
+
+   Certifique-se de que o `obj_enemy` tem uma variável `hp` para armazenar sua vida. Você pode definir isso no evento **Create** do inimigo:
+
+   ```gml
+   // Evento: Create do obj_enemy
+   hp = 100; // Vida inicial do inimigo
+   ```
+
+2. **Atualizar a Lógica de Vida:**
+
+   No evento **Step** do inimigo, você deve verificar se a vida (`hp`) chegou a zero e, se sim, lidar com a destruição ou morte do inimigo:
+
+   ```gml
+   // Evento: Step do obj_enemy
+
+   if (hp <= 0) {
+       // Executa a animação de morte ou outros efeitos
+       // Exemplo: instance_create_layer(x, y,Vamos continuar detalhando a lógica do inimigo (`obj_enemy`) e como ele deve reagir adequadamente quando recebe dano e eventualmente morre. Aqui está o restante da configuração para o `obj_enemy` e algumas dicas adicionais para integração:
+
+### Atualizar a Lógica de Vida do Inimigo
+
+3. **Lógica de Morte e Efeitos:**
+
+   No evento **Step** do inimigo, você pode adicionar código para executar ações quando a vida (`hp`) chega a zero. Aqui está um exemplo completo, incluindo efeitos visuais e sonoros:
+
+   ```gml
+   // Evento: Step do obj_enemy
+
+   if (hp <= 0) {
+       // Executa a animação de morte ou outros efeitos
+       if (instance_exists(obj_death_effect)) {
+           instance_create_layer(x, y, "Effects", obj_death_effect);
+       }
+       
+       // Adiciona um efeito sonoro de morte
+       if (instance_exists(snd_death)) {
+           audio_play_sound(snd_death, 1, false);
+       }
+       
+       // Destrói o inimigo
+       instance_destroy();
+   }
+   ```
+
+   - **obj_death_effect**: Um objeto que você pode criar para mostrar uma animação ou efeito quando o inimigo morre.
+   - **snd_death**: Um som de morte que será tocado quando o inimigo for destruído.
+
+4. **Adicionar Feedback Visual ou Sonoro:**
+
+   Se desejar adicionar mais detalhes para a morte do inimigo, você pode criar um efeito de morte específico que pode incluir animações de partículas, explosões, ou qualquer outro efeito visual que combine com o estilo do seu jogo. 
+
+   - **Efeito Visual:**
+
+     ```gml
+     // No evento: Create do obj_death_effect
+     sprite_index = spr_death_effect; // Define o sprite para o efeito de morte
+     image_speed = 1; // Define a velocidade da animação
+     ```
+
+   - **Efeito Sonoro:**
+
+     Certifique-se de ter um som apropriado no recurso de sons (`snd_death`) para ser reproduzido quando o inimigo morre.
+
+### Integração Completa
+
+Aqui está um resumo de como integrar todas as partes do sistema de ataque e inimigo:
+
+1. **Ataque do Jogador:**
+   - **obj_player** detecta o pressionamento da tecla de ataque.
+   - **scr_attack.gml** aplica dano a inimigos próximos e opcionalmente adiciona efeitos visuais e sonoros.
+
+2. **Configuração do Inimigo:**
+   - **obj_enemy** tem uma variável `hp` que é inicializada no evento **Create**.
+   - No evento **Step**, o inimigo verifica se a vida é menor ou igual a zero e executa ações apropriadas (como criar um efeito visual e sonoro, e depois se destruir).
+
+3. **Testes:**
+   - Teste o sistema completo para garantir que o ataque está funcionando como esperado e que o inimigo reage adequadamente ao dano e à morte.
+   - Verifique se os efeitos visuais e sonoros são exibidos e tocados corretamente.
+
+Se você encontrar algum problema ou tiver dúvidas adicionais sobre a implementação, sinta-se à vontade para perguntar!

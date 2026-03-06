@@ -1,0 +1,244 @@
+/* Estilos globais */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #fafafa;
+  text-decoration: none;
+  font-family: "Nunito", sans-serif;
+  scroll-behavior: smooth;
+  scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+}
+
+hr {
+  height: 6px;
+  margin: 3rem 0;
+  background: url("images/pages/index/hrspike.png") repeat-x;
+  border: 0;
+}
+
+/* NAVBAR */
+header {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 40px;
+  padding: 1.75rem 20%;
+  top: 0;
+  left: 0;
+  background-color: rgba(15, 37, 33, 0.8);
+  opacity: 90%;
+  z-index: 100;
+}
+
+nav a {
+  padding-right: 2.4rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  transition: ease-in-out 0.2s;
+}
+
+nav a:hover {
+  color: #f4835e;
+}
+
+.social {
+  font-size: 1.65rem;
+}
+
+.social i {
+  margin-top: 5px;
+  padding-left: 0.8rem;
+  transition: ease-in-out 0.2s;
+}
+
+.social i:hover {
+  color: #f4835e;
+}
+
+/* Hero Section */
+
+.bg-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 120vh;
+  background-image: url("images/pages/index/main_background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.mainpage_logo {
+  position: absolute;
+  margin-bottom: 16rem;
+  z-index: 1;
+}
+
+.mainpage_logo .logo {
+  width: 37.5rem;
+}
+
+.btn_play {
+  width: 16rem;
+  margin-top: 12.5rem;
+  z-index: 0;
+  cursor: pointer;
+  transition: transform ease-in-out 0.3s;
+}
+
+.btn_play:hover {
+  transform: translateY(1.25rem);
+}
+
+/* Content */
+
+#content {
+  position: absolute;
+  width: 100%;
+  padding-top: 40px;
+  background: linear-gradient(
+    0deg,
+    rgba(3, 9, 7, 1) 0%,
+    rgba(36, 77, 65, 1) 100%
+  );
+}
+
+/* About Section */
+
+.about {
+  text-align: center;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.section-title {
+  margin: 0 20%;
+  font-size: 2.75rem;
+  font-weight: 600;
+  color: #f4835e;
+}
+
+.about p {
+  margin: 0 20%;
+  font-size: 1.2rem;
+}
+
+.about hr {
+  margin-left: 20%;
+  width: 60%;
+}
+
+.about-video {
+  display: flex;
+  justify-content: center;
+}
+
+.about-video video {
+  width: 60%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Features Section */
+
+.features {
+  text-align: center;
+  width: 100%;
+}
+
+.features ul {
+  list-style: none;
+}
+
+.features ul li {
+  margin: 0 20%;
+  font-size: 1.2rem;
+}
+
+.features hr {
+  margin-left: 20%;
+  width: 60%;
+}
+
+/* Banner Section */
+
+.banner {
+  z-index: 2;
+}
+
+.banner .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.banner .container .plate_play {
+  width: 32rem;
+  z-index: 2;
+}
+
+.banner .container .plate_windows {
+  cursor: pointer;
+  width: 8.5rem;
+  margin-top: -1rem;
+  margin-bottom: 0.5rem;
+  transition: transform ease-in-out 0.3s;
+}
+
+.banner .container .plate_windows:hover {
+  transform: translateY(0.7rem);
+}
+
+.banner hr {
+  width: 60%;
+}
+
+/* Footer */
+footer {
+  color: #fff;
+  z-index: 2;
+}
+
+footer img {
+  width: 12rem;
+}
+
+footer .container {
+  text-align: center;
+}
+
+footer .container-terms {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+footer .container-terms a {
+  color: #f4835e;
+}
+
+footer .container-terms p {
+  margin: 0 0.5rem;
+}

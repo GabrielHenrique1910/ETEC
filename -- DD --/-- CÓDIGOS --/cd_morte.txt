@@ -1,0 +1,112 @@
+Para mostrar uma tela de morte quando a vida do personagem principal chega a zero, você precisará criar um sistema que detecta a morte do personagem e, em seguida, exibe uma tela de game over. Vou descrever como fazer isso passo a passo.
+
+### Passo 1: Crie o Objeto da Tela de Morte
+
+1. **Crie um novo objeto** chamado `obj_game_over`.
+2. **Adicione um Evento Create** para definir o sprite ou texto que será exibido quando o personagem morrer.
+
+   **Código no Evento Create do `obj_game_over`:**
+
+   ```gml
+   // Evento Create do obj_game_over
+   // Configura o sprite ou texto para a tela de game over
+   sprite_index = spr_game_over; // Define o sprite da tela de game over
+   image_index = 0;
+   ```
+
+   Se você preferir usar texto ao invés de um sprite, você pode desenhar o texto diretamente no evento Draw.
+
+   **Código para desenhar texto:**
+
+   ```gml
+   // Evento Draw do obj_game_over
+   draw_text(room_width / 2, room_height / 2, "Game Over", c_red);
+   ```
+
+### Passo 2: Modifique o Código do Personagem Principal (`obj_player`)
+
+1. **Adicione uma variável** `game_over` para controlar se o jogo está em estado de game over.
+
+   **No Evento Create do `obj_player`:**
+
+   ```gml
+   // Evento Create do obj_player
+   life = 100; // Vida inicial
+   max_life = 100; // Vida máxima
+   game_over = false; // Estado do jogo
+   ```
+
+2. **Atualize o Evento Step** para verificar se a vida chegou a zero e mostrar a tela de game over.
+
+   **Código para o Evento Step do `obj_player`:**
+
+   ```gml
+   // Evento Step do obj_player
+   cima = keyboard_check(vk_up) || keyboard_check(ord("W"));
+   baixo = keyboard_check(vk_down) || keyboard_check(ord("S"));
+   direita = keyboard_check(vk_right) || keyboard_check(ord("D"));
+   esquerda = keyboard_check(vk_left) || keyboard_check(ord("A"));
+
+   // Atualize a velocidade com base nos inputs
+   velv = (baixo - cima) * vel;
+   velh = (direita - esquerda) * vel;
+
+   // Atualiza o estado do personagem
+   roda_estado();
+
+   // Verificar colisões e movimentação
+   move_and_collide(velh, velv, all);
+
+   // Checar colisão com inimigos e aplicar dano
+   if (place_meeting(x, y, enm_obj)) {
+       life -= 0.5; // Reduz a vida
+       if (life <= 0) {
+           life = 0;
+           game_over = true; // Define o estado de game over
+       }
+   }
+
+   // Mostrar tela de game over
+   if (game_over) {
+       instance_create_layer(0, 0, "Instances", obj_game_over);
+       instance_destroy(); // Destroi o personagem
+   }
+   ```
+
+### Passo 3: Adicione um Efeito de Game Over
+
+1. **Adicione um Evento Create** no `obj_game_over` para configurar a tela de game over.
+
+   **Código do Evento Create do `obj_game_over`:**
+
+   ```gml
+   // Evento Create do obj_game_over
+   sprite_index = spr_game_over; // Define o sprite para a tela de game over
+   image_index = 0;
+   ```
+
+2. **No Evento Draw** do `obj_game_over`, desenhe o sprite ou o texto.
+
+   **Código do Evento Draw do `obj_game_over`:**
+
+   ```gml
+   // Evento Draw do obj_game_over
+   draw_self(); // Desenha o sprite do game over
+   ```
+
+   Ou, se você estiver usando texto:
+
+   ```gml
+   // Evento Draw do obj_game_over
+   draw_text(room_width / 2, room_height / 2, "Game Over", c_red);
+   ```
+
+### Passo 4: Configurar o Sprite de Game Over (Opcional)
+
+Se estiver usando um sprite, certifique-se de que você tenha um sprite apropriado para a tela de game over, chamado `spr_game_over`, configurado no seu projeto.
+
+### Passo 5: Testar o Sistema
+
+Certifique-se de testar seu jogo para garantir que a tela de game over aparece corretamente quando a vida do personagem chega a zero e que o personagem é destruído.
+
+Se precisar de mais assistência ou ajustes específicos, sinta-se à vontade para perguntar!

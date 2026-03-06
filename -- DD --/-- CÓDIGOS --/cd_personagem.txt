@@ -1,0 +1,124 @@
+codigo personagem;
+
+create:
+/// @description Inserir descrição aqui
+// Você pode escrever seu código neste editor
+
+// Evento Create do obj_player
+life = 100; // Vida inicial
+max_life = 100; // Vida máxima
+
+// Definir estados
+estado_idle = new estado();
+estado_walk = new estado();
+
+// Região estado_idle
+#region estado_idle
+estado_idle.inicia = function()
+{
+    var _sprite = define_sprite(dir, spr_player_side, spr_player_back, spr_player_back);
+    sprite_index = _sprite;
+    image_index = 0;
+}
+
+estado_idle.roda = function()
+{
+    // Verificar se o jogador está se movendo
+    if (cima || baixo || esquerda || direita)
+    {
+        troca_estado(estado_walk);
+    }
+}
+#endregion
+
+// Região estado_walk
+#region estado_walk
+estado_walk.inicia = function()
+{
+    dir = (point_direction(0, 0, direita - esquerda, baixo - cima) div 90) mod 4;
+    sprite_index = define_sprite(dir, spr_plr_walk_s, spr_plr_walk_f, spr_plr_walk_b);
+    image_index = 0;
+}
+
+estado_walk.roda = function()
+{
+    dir = (point_direction(0, 0, velh, velv) div 90) mod 4;
+
+    if (velh != 0)
+    {
+        image_xscale = sign(velh);
+    }
+    else if (velv != 0)
+    {
+        image_xscale = sign(velv);
+    }
+    
+    sprite_index = define_sprite(dir, spr_plr_walk_s, spr_plr_walk_f, spr_plr_walk_b);
+
+    velv = (baixo - cima) * vel;
+    velh = (direita - esquerda) * vel;
+
+    // Trocar para o estado idle se não houver movimento
+    if (velv == 0 && velh == 0)
+    {
+        troca_estado(estado_idle);
+    }
+}
+#endregion
+
+// Iniciando variáveis
+#region iniciando variaveis
+cima = noone;
+baixo = noone; 
+direita = noone;
+esquerda = noone;
+
+velv = 0;
+velh = 0;
+vel = 1.3;
+dir = 0;
+#endregion
+
+inicia_estado(estado_idle);
+
+
+etapa:
+// Evento Step
+cima = keyboard_check(vk_up) || keyboard_check(ord("W"));
+baixo = keyboard_check(vk_down) || keyboard_check(ord("S"));
+direita = keyboard_check(vk_right) || keyboard_check(ord("D"));
+esquerda = keyboard_check(vk_left) || keyboard_check(ord("A"));
+
+// Atualize a velocidade com base nos inputs
+velv = (baixo - cima) * vel;
+velh = (direita - esquerda) * vel;
+
+// Atualiza o estado do personagem
+roda_estado();
+
+// Verificar colisões e movimentação
+move_and_collide(velh, velv, all);
+
+// Checar colisão com inimigos
+if (place_meeting(x, y, enm_obj)) {
+    // Aqui você pode adicionar lógica para tratamento da colisão, como aplicar dano
+}
+
+
+etapa final:
+/// @description Inserir descrição aqui
+// Você pode escrever seu código neste editor
+
+//USANDO OS MOVIMENTOS
+move_and_collide(velh, vel
+
+obj_inimigo:
+// Evento de colisão com o inimigo
+if (place_meeting(x, y, enm_obj)) {
+    life -= 0.5; // Reduz a vida
+    if (life <= 0) {
+        life = 0;
+        instance_create_layer(0, 0, "Instances", obj_morte);
+        instance_destroy(); // Destroi o personagem
+    }
+}
