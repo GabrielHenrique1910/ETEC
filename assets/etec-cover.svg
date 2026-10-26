@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="480" viewBox="0 0 1600 480" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="80" y1="0" x2="1540" y2="510" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#071A18"/>
+      <stop offset=".52" stop-color="#0B2924"/>
+      <stop offset="1" stop-color="#102D35"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="1074" y1="35" x2="1460" y2="425" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#34D399" stop-opacity=".34"/>
+      <stop offset="1" stop-color="#22D3EE" stop-opacity=".04"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="120" y1="0" x2="604" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6EE7B7"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+    <pattern id="grid" width="38" height="38" patternUnits="userSpaceOnUse">
+      <path d="M38 0H0V38" stroke="#A7F3D0" stroke-opacity=".055"/>
+    </pattern>
+    <filter id="blur" x="920" y="-100" width="760" height="690" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="60"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="480" rx="28" fill="url(#bg)"/>
+  <rect width="1600" height="480" rx="28" fill="url(#grid)"/>
+  <ellipse cx="1290" cy="198" rx="270" ry="220" fill="url(#glow)" filter="url(#blur)"/>
+  <path d="M0 443C262 401 469 482 722 440C1009 392 1273 444 1600 366V480H0V443Z" fill="#04120F" fill-opacity=".42"/>
+  <path d="M93 90H151" stroke="url(#accent)" stroke-width="4" stroke-linecap="round"/>
+  <text x="93" y="126" fill="#A7F3D0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" font-weight="700" letter-spacing="3.6">PORTFÓLIO • DESENVOLVIMENTO DE SISTEMAS</text>
+  <text x="88" y="222" fill="#F0FDFA" font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="68" font-weight="800" letter-spacing="-2.5">Ideias que viram</text>
+  <text x="88" y="301" fill="url(#accent)" font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="76" font-weight="800" letter-spacing="-3">código.</text>
+  <text x="94" y="359" fill="#B6D4CD" font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="21">Uma jornada prática pela ETEC: lógica, dados, web e projetos.</text>
+  <g transform="translate(1042 91) rotate(-5 220 137)">
+    <rect x="0" y="0" width="428" height="272" rx="18" fill="#071714" fill-opacity=".82" stroke="#8DE9C3" stroke-opacity=".25"/>
+    <path d="M0 54H428" stroke="#8DE9C3" stroke-opacity=".18"/>
+    <circle cx="27" cy="27" r="5" fill="#FB7185"/><circle cx="47" cy="27" r="5" fill="#FBBF24"/><circle cx="67" cy="27" r="5" fill="#34D399"/>
+    <text x="29" y="102" fill="#6EE7B7" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="19">&lt; aprendizado</text>
+    <text x="54" y="141" fill="#E2E8F0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18">const curiosidade = true;</text>
+    <text x="54" y="178" fill="#A5B4FC" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18">while (curiosidade) {</text>
+    <text x="78" y="215" fill="#FDE68A" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18">  construir();</text>
+    <text x="54" y="249" fill="#A5B4FC" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18">}</text>
+  </g>
+  <g opacity=".74">
+    <circle cx="1494" cy="89" r="4" fill="#6EE7B7"/><circle cx="1531" cy="129" r="2.5" fill="#22D3EE"/>
+    <circle cx="1010" cy="390" r="3" fill="#6EE7B7"/><circle cx="1464" cy="389" r="3" fill="#22D3EE"/>
+  </g>
+</svg>
